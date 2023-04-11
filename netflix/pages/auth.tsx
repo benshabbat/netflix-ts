@@ -11,7 +11,10 @@ const Auth = () => {
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center">
             <h2 className="text-white text-4xl mb-8 font-semibold">Sign In </h2>
             <div className="flex flex-col gap-4 ">
-              <Input/>
+              <Input id={"email"} type={"email"}
+              //  onChange={} 
+              // value={"email"} 
+              label={"email"} />
             </div>
           </div>
         </div>

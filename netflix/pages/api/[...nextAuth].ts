@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import prismadb from "@/lib/prismadb";
+import prismaDB from "@/lib/prismaDB";
 import { compare } from "bcrypt";
 export default NextAuth({
   providers: [
@@ -22,7 +22,7 @@ export default NextAuth({
           throw new Error("Email and password required");
         }
 
-        const user = await prismadb.user.findUnique({
+        const user = await prismaDB.user.findUnique({
           where: {
             email: credentials.email,
           },

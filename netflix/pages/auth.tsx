@@ -3,7 +3,7 @@ import Input from "@/components/Input";
 import axios from "axios";
 const Auth = () => {
   const [email, setEmail] = useState("");
-  const [user, setUser] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [variant, setVariant] = useState("login");
   const toggleVariant = useCallback(() => {
@@ -13,15 +13,15 @@ const Auth = () => {
   }, []);
   const register = useCallback(async () => {
     try {
-      await axios.post('/api/register', {
+      await axios.post("/api/register", {
         email,
-        user,
-        password
+        name,
+        password,
       });
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-  }, [email, user, password]);
+  }, [email, name, password]);
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black h-full w-full lg:bg-opacity-50">
@@ -36,13 +36,11 @@ const Auth = () => {
             <div className="flex flex-col gap-4 ">
               {variant === "register" && (
                 <Input
-                  id={"user"}
-                  type={"text"}
-                  onChange={(e: any) => {
-                    setUser(e.target.value);
-                  }}
-                  value={user}
-                  label={"Username"}
+                  id="name"
+                  type="text"
+                  label="Username"
+                  value={name}
+                  onChange={(e: any) => setName(e.target.value)}
                 />
               )}
               <Input
@@ -64,7 +62,10 @@ const Auth = () => {
                 label={"Password"}
               />
             </div>
-            <button onClick={register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+            <button
+              onClick={register}
+              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+            >
               {variant === "login" ? "Sign In" : "Register"}
             </button>
             <p className="mt-12 text-neutral-200">

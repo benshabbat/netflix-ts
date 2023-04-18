@@ -1,6 +1,6 @@
 import { NextPageContext } from "next";
+import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { getSession, signOut } from "next-auth/react";
 import useCurrentUser from "@/hooks/useCurrentUser";
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -21,7 +21,7 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 const profiles = () => {
   const router = useRouter();
-  const {data}=useCurrentUser()
+  const { data } = useCurrentUser();
   return (
     <div className="flex items-center h-full justify-center">
       <div className="flex flex-col">
@@ -35,7 +35,9 @@ const profiles = () => {
               >
                 <img src="/images/default-blue.png" alt="blueProfile" />
               </div>
-              <div className="mt-4 text-gray-400 text-2xl text-center group-hover:text-white">{data?.name}</div>
+              <div className="mt-4 text-gray-400 text-2xl text-center group-hover:text-white">
+                {data?.name}
+              </div>
             </div>
           </div>
         </div>

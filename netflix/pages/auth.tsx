@@ -89,8 +89,8 @@ const Auth = () => {
               {variant === "login" ? "Sign In" : "Register"}
             </button>
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
-              <AuthItem icon={<FcGoogle size={20} />} name={"google"}/>
-              <AuthItem icon={<BsGithub size={20} />} name={"github"}/>
+              <AuthItem icon={<FcGoogle size={20} />} name={"google"} />
+              <AuthItem icon={<BsGithub size={20} />} name={"github"} />
             </div>
             <p className="mt-12 text-neutral-200">
               {variant === "login"

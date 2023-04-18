@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import AuthItem from "@/components/AuthItem";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -88,18 +89,8 @@ const Auth = () => {
               {variant === "login" ? "Sign In" : "Register"}
             </button>
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
-              <div
-                onClick={() => signIn("google", { callbackUrl: "/profiles" })}
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
-              >
-                <FcGoogle size={20} />
-              </div>
-              <div
-                onClick={() => signIn("github", { callbackUrl: "/profiles" })}
-                className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
-              >
-                <BsGithub size={20} />
-              </div>
+              <AuthItem icon={<FcGoogle size={20} />} name={"google"}/>
+              <AuthItem icon={<BsGithub size={20} />} name={"github"}/>
             </div>
             <p className="mt-12 text-neutral-200">
               {variant === "login"

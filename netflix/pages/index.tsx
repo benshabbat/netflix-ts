@@ -25,7 +25,6 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <h1 className="text-4xl text-blue-600">Hello {data?.name}</h1>
       <Billboard/>
     </>
   );

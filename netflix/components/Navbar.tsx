@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="w-full fixe z-40 ">
       <div className="flex flex-row items-center transition duration-500 bg-zinc-900 bg-opacity-90 px-4 md:px-16 py-6 ">
         <img src="/images/logo.jpg" alt="logo" className="h-4 lg:h-7 " />
-  
+
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavbarItem label={"Home"} />
           <NavbarItem label={"Series"} />
@@ -46,7 +46,7 @@ const Navbar = () => {
             className="flex flex-row gap-2 items-center relative cursor-pointer"
           >
             <div className="w-6 h-6 lg:h-10 lg:w-10 rounded-md overflow-hidden">
-              <img src="/images/default-blue.png" alt="blueProfile" />
+              <img src="/images/davidchen.jpg" alt="davidchen" />
             </div>
             <AiOutlineMenu className="text-white transition" />
             <MenuAccount visible={showAccount} />

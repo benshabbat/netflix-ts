@@ -19,7 +19,7 @@ const Billboard = () => {
         </p>
         <div className="mt-1 md:mt-2 ">
           <button className="flex flex-row items-center bg-white bg-opacity-30 rounded-md
-           text-white py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold hover:bg-opacity-20 transition">
+           text-white py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold hover:bg-opacity-20 transition gap-1">
             <AiOutlineInfoCircle />
             More Info
           </button>

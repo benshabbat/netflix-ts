@@ -28,6 +28,9 @@ const MovieCard: React.Fc<MovieCardProps> = ({ data }) => {
               <BsFillPlayFill className="text-black w-4 lg:w-6" />
             </div>
           </div>
+          <div className="flex flex-row mt-4 gap-2 items-center">
+            <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
+          </div>
         </div>
       </div>
     </div>

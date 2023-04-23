@@ -1,8 +1,13 @@
 import React from "react";
 import useBillboard from "@/hooks/useBillBoard";
+import { isEmpty } from "lodash";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 const Billboard = () => {
   const { data } = useBillboard();
+  
+  if (isEmpty(data)) {
+    return null;
+  }
   return (
     <div className="h-[56.25vw]">
       <iframe

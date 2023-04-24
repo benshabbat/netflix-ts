@@ -27,6 +27,7 @@ export default async function handler(
       });
       return res.status(200).json(user);
     }
+
     if (req.method === "DELETE") {
       const { movieId } = req.body;
       const { currentUser } = await serverAuth(req);
@@ -47,6 +48,7 @@ export default async function handler(
       });
       return res.status(200).json(updateUser);
     }
+    return res.status(400).end();
   } catch (error) {
     console.log(error);
 

@@ -16,7 +16,7 @@ export default async function handler(
           id: movieId,
         },
       });
-      if(!existingMovie) throw new Error(`invalid movie`);
+      if (!existingMovie) throw new Error(`invalid movie`);
       const user = await prismaDB.user.update({
         where: {
           email: currentUser.email || "",
@@ -25,6 +25,7 @@ export default async function handler(
           favoriteIds: { push: movieId },
         },
       });
+      return res.status(200).json(user);
     }
   } catch (error) {
     console.log(error);

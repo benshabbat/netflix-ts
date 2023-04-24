@@ -27,6 +27,26 @@ export default async function handler(
       });
       return res.status(200).json(user);
     }
+    if (req.method === "DELETE") {
+      const { movieId } = req.body;
+      const { currentUser } = await serverAuth(req);
+      const existingMovie = await prismaDB.movie.findUnique({
+        where: {
+          id: movieId,
+        },
+      });
+      if (!existingMovie) throw new Error(`invalid movie`);
+      const updateFavMovies = without(currentUser?.favoriteIds, movieId);
+      const updateUser = await prismaDB.user.update({
+        where: {
+          email: currentUser.email || "",
+        },
+        data: {
+          favoriteIds: updateFavMovies,
+        },
+      });
+      return res.status(200).json(updateUser);
+    }
   } catch (error) {
     console.log(error);
 

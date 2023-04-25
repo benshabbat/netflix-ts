@@ -1,5 +1,5 @@
 import React from "react";
-import useBillboard from "@/hooks/useBillBoard";
+import useBillboard from "@/hooks/useBillboard";
 import { isEmpty } from "lodash";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 const Billboard = () => {

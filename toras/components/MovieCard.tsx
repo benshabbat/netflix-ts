@@ -10,8 +10,8 @@ const MovieCard: React.Fc<MovieCardProps> = ({ data }) => {
       <img
         className="object-cover cursor-pointer transition duration shadow-xl rounded-md
       sm:group-hover:opacity-0 delay-300 w-full h-[12vw]"
-        src={data.thumbnailUrl}
-        alt={data.title}
+        src={data?.thumbnailUrl}
+        alt={data?.title}
       />
       <div
         className="
@@ -19,8 +19,8 @@ const MovieCard: React.Fc<MovieCardProps> = ({ data }) => {
         scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100"
       >
         <img
-          src={data.thumbnailUrl}
-          alt={data.title}
+          src={data?.thumbnailUrl}
+          alt={data?.title}
           className="cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]"
         />
         <div className="z-10 bg-zinc-800 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md">
@@ -31,10 +31,10 @@ const MovieCard: React.Fc<MovieCardProps> = ({ data }) => {
             <FavoriteButton movieId={data?.id}/>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
+            <p className="text-white text-[10px] lg:text-sm">{data?.duration}</p>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
+            <p className="text-white text-[10px] lg:text-sm">{data?.genre}</p>
           </div>
         </div>
       </div>

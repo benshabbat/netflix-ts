@@ -18,17 +18,19 @@ const FavoriteButton: React.Fc<FavoriteButtonProps> = ({ movieId }) => {
   }, [user, movieId]);
 
   const toggleFav = useCallback(async () => {
-    let res;
+    let response;
+
     if (isFav) {
-      res = await axios.delete("/api/favorite", { data: { movieId } });
+      response = await axios.delete('/api/favorite', { data: { movieId } });
     } else {
-      res = await axios.post("/api/favorite", { movieId });
+      response = await axios.post('/api/favorite', { movieId });
     }
-    const updatedFav = res?.data?.favoriteIds;
+    const updatedFav = response?.data?.favoriteIds;
 
     mutateUser({ ...user, favoriteIds: updatedFav });
     mutateFav();
-  }, [mutateFav, mutateUser, movieId, user, isFav]);
+  }, [user,mutateFav, mutateUser, movieId,  isFav]);
+  
 
   const Icon = isFav ? AiOutlineCheck : AiOutlinePlus;
 

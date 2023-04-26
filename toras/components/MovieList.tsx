@@ -6,7 +6,7 @@ interface MovieListProps {
   data: Record<string, any>[];
   title: string;
 }
-const MovieList: React.Fc<MovieListProps> = ({ data, title }) => {
+const MovieList: React.FC<MovieListProps> = ({ data, title }) => {
   if (isEmpty(data)) {
     return null;
   }

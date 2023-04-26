@@ -9,8 +9,9 @@ interface FavoriteButtonProps {
   movieId: string;
 }
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
+
   const { mutate: mutateFav } = useFavorite();
-  const { mutate: mutateUser, data: user } = useCurrentUser();
+  const { data: user, mutate: mutateUser } = useCurrentUser();
 
   const isFav = useMemo(() => {
     const list = user?.favoriteIds || [];

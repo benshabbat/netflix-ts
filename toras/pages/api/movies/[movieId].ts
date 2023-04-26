@@ -11,12 +11,26 @@ export default async function handler(
     if (req.method !== "GET") {
       return res.status(405).end();
     }
-
     await serverAuth(req);
+    const { movieId } = req.query;
 
-    
+    if (typeof movieId !== "string") {
+      throw new Error(`Invalid id`);
+    }
 
-    return res.status(200).json();
+    if (!movieId) {
+      throw new Error(`Invalid id`);
+    }
+    const movie = await prismaDB.movie.findUnique({
+      where:{
+        id: movieId
+      }
+    })
+    if (!movie) {
+      throw new Error(`Invalid id`);
+    }
+
+    return res.status(200).json(movie);
   } catch (error) {
     console.log({ error });
     return res.status(500).end();

@@ -8,7 +8,7 @@ import { AiOutlinePlus, AiOutlineCheck } from "react-icons/ai";
 interface FavoriteButtonProps {
   movieId: string;
 }
-const FavoriteButton: React.Fc<FavoriteButtonProps> = ({ movieId }) => {
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   const { mutate: mutateFav } = useFavorite();
   const { mutate: mutateUser, data: user } = useCurrentUser();
 

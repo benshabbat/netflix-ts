@@ -3,7 +3,9 @@ import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineBell } from "react-icons/ai";
 import MenuAccount from "./MenuAccount";
+import { useRouter } from "next/router";
 const Navbar = () => {
+  const router = useRouter();
   const [showMobile, setShowMobile] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
   const toggleMobileMenu = useCallback(() => {
@@ -15,7 +17,12 @@ const Navbar = () => {
   return (
     <nav className="w-full fixed z-40 ">
       <div className="flex flex-row items-center transition duration-500 bg-zinc-900 bg-opacity-90 px-4 md:px-16 py-6 ">
-        <img src="/images/logo.jpg" alt="logo" className="h-4 lg:h-7 " />
+        <img
+          src="/images/logo.jpg"
+          alt="logo"
+          className="h-4 lg:h-7 "
+          onClick={() => router.push("/")}
+        />
 
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavbarItem label={"Home"} />

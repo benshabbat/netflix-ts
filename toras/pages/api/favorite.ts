@@ -8,9 +8,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    if (req.method === "POST") {
-      const { movieId } = req.body;
-      const { currentUser } = await serverAuth(req);
+    if (req.method === "PUT") {
+      const { movieId ,idUser } = req.body;
+      // const { currentUser } = await serverAuth(req);
       
       const existingMovie = await prismaDB.movie.findUnique({
         where: {
@@ -24,7 +24,7 @@ export default async function handler(
       else{
         const user = await prismaDB.user.update({
           where: {
-            id: currentUser.id,
+            id: idUser,
           },
           data: {
             favoriteIds: { push: movieId },

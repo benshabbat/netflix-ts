@@ -36,18 +36,18 @@ export default async function handler(
     }
 
     if (req.method === "DELETE") {
-      const { movieId } = req.body;
-      const { currentUser } = await serverAuth(req);
+      const { movieId,user } = req.body;
+      // const { currentUser } = await serverAuth(req);
       const existingMovie = await prismaDB.movie.findUnique({
         where: {
           id: movieId,
         },
       });
       if (!existingMovie) throw new Error(`invalid movie`);
-      const updateFavMovies = without(currentUser?.favoriteIds, movieId);
+      const updateFavMovies = without(user?.favoriteIds, movieId);
       const updateUser = await prismaDB.user.update({
         where: {
-          email: currentUser.email || "",
+          id: user?.id,
         },
         data: {
           favoriteIds: updateFavMovies,

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import prismaDB from "@/lib/prismaDB";
 import serverAuth from "@/lib/serverAuth";
 import { without } from "lodash";
-import prismaDB from "@/lib/prismaDB";
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,7 +24,7 @@ export default async function handler(
       else{
         const user = await prismaDB.user.update({
           where: {
-            email: currentUser.email || "",
+            id: currentUser.id,
           },
           data: {
             favoriteIds: { push: movieId },

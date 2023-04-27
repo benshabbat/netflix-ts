@@ -1,15 +1,16 @@
-import { signOut } from "next-auth/react";
 import React from "react";
-import useCurrentUser from "../hooks/useCurrentUser";
+
+import { signOut } from "next-auth/react";
 
 interface MenuAccountProps {
   visible: boolean;
+  data: Record<string, any>;
 }
-const MenuAccount: React.FC<MenuAccountProps> = ({ visible }) => {
+const MenuAccount: React.FC<MenuAccountProps> = ({ visible,data }) => {
   if (!visible) {
     return null;
   }
-  const { data } = useCurrentUser();
+ 
   return (
     <div className="bg-black w-32 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800">
       <div className="flex flex-row gap-2 items-center justify-center cursor-pointer hover:text-gray-500 transition">

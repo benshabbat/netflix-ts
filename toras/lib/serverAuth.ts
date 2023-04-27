@@ -9,7 +9,7 @@ const serverAuth = async (req: NextApiRequest) => {
   }
 
   const currentUser = await prismaDB.user.findUnique({
-    where: { email: session.user.email },
+    where: { email: session?.user?.email },
   });
 
   if (!currentUser) {

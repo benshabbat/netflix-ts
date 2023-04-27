@@ -4,6 +4,7 @@ import MobileMenu from "./MobileMenu";
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineBell } from "react-icons/ai";
 import MenuAccount from "./MenuAccount";
 import { useRouter } from "next/router";
+import useCurrentUser from "@/hooks/useCurrentUser";
 const Navbar = () => {
   const router = useRouter();
   const [showMobile, setShowMobile] = useState(false);
@@ -14,6 +15,7 @@ const Navbar = () => {
   const toggleMenuAccount = useCallback(() => {
     setShowAccount((current) => !current);
   }, []);
+  const { data }=useCurrentUser()
   return (
     <nav className="w-full fixed z-40 ">
       <div className="flex flex-row items-center transition duration-500 bg-zinc-900 bg-opacity-90 px-4 md:px-16 py-6 ">
@@ -56,7 +58,7 @@ const Navbar = () => {
               <img src="/images/davidchen.jpg" alt="davidchen" />
             </div>
             <AiOutlineMenu className="text-white transition" />
-            <MenuAccount visible={showAccount} />
+            <MenuAccount visible={showAccount} data={data}/>
           </div>
         </div>
       </div>

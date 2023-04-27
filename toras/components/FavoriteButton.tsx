@@ -5,6 +5,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorite from "@/hooks/useFavorite";
 
 import { AiOutlinePlus, AiOutlineCheck } from "react-icons/ai";
+
 interface FavoriteButtonProps {
   movieId: string;
 }

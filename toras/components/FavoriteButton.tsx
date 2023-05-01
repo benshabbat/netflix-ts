@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from "react";
 import axios from "axios";
-
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavorite from "@/hooks/useFavorite";
 
@@ -24,7 +23,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
     let response;
     try {
       if (isFav) {
-        response = await axios.delete("/api/favorite", { data: { movieId,user } });
+        response = await axios.put("/api/unfavorite", { data: { movieId } });
       } else {
         response = await axios.put("/api/favorite", { movieId, idUser });
       }

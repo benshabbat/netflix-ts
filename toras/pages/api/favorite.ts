@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prismaDB from "@/lib/prismaDB";
-import serverAuth from "@/lib/serverAuth";
+// import serverAuth from "@/lib/serverAuth";
 import { without } from "lodash";
 
 export default async function handler(
@@ -44,13 +44,13 @@ export default async function handler(
         },
       });
       if (!existingMovie) throw new Error(`invalid movie`);
-      const updateFavMovies = without(user?.favoriteIds, movieId);
+      const updatedFavMovies = without(user?.favoriteIds, movieId);
       const updateUser = await prismaDB.user.update({
         where: {
           id: user?.id,
         },
         data: {
-          favoriteIds: updateFavMovies,
+          favoriteIds: updatedFavMovies,
         },
       });
       return res.status(200).json(updateUser);

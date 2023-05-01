@@ -3,6 +3,7 @@ import { getSession } from "next-auth/react";
 import Navbar from "@/components/Navbar";
 import Billboard from "@/components/Billboard";
 import MoviesList from "@/components/MoviesList";
+import InfoModel from "@/components/InfoModel";
 
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -25,6 +26,7 @@ export default function Home() {
   
   return (
     <>
+    <InfoModel/>
       <Navbar />
       <Billboard />
       <MoviesList/>

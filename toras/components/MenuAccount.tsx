@@ -3,7 +3,7 @@ import React from "react";
 import { signOut } from "next-auth/react";
 
 interface MenuAccountProps {
-  visible: boolean;
+  visible?: boolean;
   data: Record<string, any>;
 }
 const MenuAccount: React.FC<MenuAccountProps> = ({ visible,data }) => {

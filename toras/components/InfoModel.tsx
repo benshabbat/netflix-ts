@@ -66,6 +66,9 @@ const InfoModel: React.FC<InfoModelProps> = ({ visible, onClose }) => {
               </div>
             </div>
           </div>
+          <div className="px-12 py-8">
+            <p className="text-green-400 font-semibold text-lg">New</p>
+          </div>
         </div>
       </div>
     </div>

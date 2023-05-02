@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import FavoriteButton from "./FavoriteButton";
 import PlayButton from "./PlayButton";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import useInfoModel from "@/hooks/useInfoModel";
 interface MovieCardProps {
   data: Record<string, any>;
 }
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+  const { openModel } = useInfoModel();
+  const handleOpenModel = useCallback(() => {
+    openModel(data?.id);
+  }, [openModel, data?.id]);
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <img
@@ -27,6 +33,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
           <div className="flex flex-row items-center gap-3">
             <PlayButton movieId={data?.id} />
             <FavoriteButton movieId={data?.id} />
+            <button
+              onClick={handleOpenModel}
+              className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 bg-white border-white border-2
+               rounded-full flex justify-center items-center transition hover:border-neutral-300"
+            >
+              <AiOutlineInfoCircle />
+            </button>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">

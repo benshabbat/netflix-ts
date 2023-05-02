@@ -1,10 +1,19 @@
-import React from "react";
+import React,{useCallback} from "react";
 import useBillboard from "@/hooks/useBillboard";
 import { isEmpty } from "lodash";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import PlayButtonBillboard from "./PlayButtonBillboard";
+import useInfoModel from "@/hooks/useInfoModel";
 const Billboard = () => {
   const { data } = useBillboard();
+  const {openModel}= useInfoModel();
+  const handleOpenModel = useCallback(
+    () => {
+      openModel(data?.id)
+    },
+    [openModel,data?.id],
+  )
+  
 
   if (isEmpty(data)) {
     return null;
@@ -25,7 +34,7 @@ const Billboard = () => {
         </p>
         <div className="mt-1 md:mt-2 flex flex-row gap-1">
           <PlayButtonBillboard movieId={data?.id} />
-          <button
+          <button onClick={handleOpenModel}
             className="flex flex-row items-center bg-white bg-opacity-30 rounded-md
            text-white py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold hover:bg-opacity-20 transition gap-1"
           >

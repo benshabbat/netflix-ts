@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Billboard from "@/components/Billboard";
 import MoviesList from "@/components/MoviesList";
 import InfoModel from "@/components/InfoModel";
-
+import useInfoModel from "@/hooks/useInfoModel";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -23,13 +23,13 @@ export async function getServerSideProps(context: NextPageContext) {
   };
 }
 export default function Home() {
-  
+  const { isOpen, closeModel } = useInfoModel();
   return (
     <>
-    <InfoModel/>
+      <InfoModel visible={isOpen} onClose={closeModel} />
       <Navbar />
       <Billboard />
-      <MoviesList/>
+      <MoviesList />
     </>
   );
 }
